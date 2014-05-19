@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D45a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CCLoadingViewController">
+            <connections>
+                <outlet property="actionNameLabel" destination="Irf-Pj-Mwl" id="hsE-jF-Zmu"/>
+                <outlet property="activityIndicator" destination="HJE-uS-ivv" id="Zk1-ag-7EH"/>
+                <outlet property="nameLabel" destination="jio-h5-5mM" id="FxA-o8-Xcc"/>
+                <outlet property="view" destination="iN0-l3-epB" id="0ha-yZ-C1o"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chillies.png" translatesAutoresizingMaskIntoConstraints="NO" id="3fk-Kq-SNX">
+                    <rect key="frame" x="0.0" y="298" width="320" height="212"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="212" id="Al3-m5-kpO"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Chillicoders ®" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd2-lU-e08">
+                    <rect key="frame" x="20" y="510" width="280" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://chillicoders.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiC-QR-Dre">
+                    <rect key="frame" x="20" y="532" width="280" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVq-hU-87M">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="298"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HJE-uS-ivv">
+                            <rect key="frame" x="142" y="131" width="37" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="1" green="0.15236067039208157" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgK-9c-bOy">
+                            <rect key="frame" x="125" y="176" width="71" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Config name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jio-h5-5mM">
+                            <rect key="frame" x="95" y="95" width="130" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irf-Pj-Mwl">
+                            <rect key="frame" x="146" y="199" width="29" height="13"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="11"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="jio-h5-5mM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sVq-hU-87M" secondAttribute="leading" constant="5" id="A5x-Ef-39r"/>
+                        <constraint firstItem="GgK-9c-bOy" firstAttribute="top" secondItem="HJE-uS-ivv" secondAttribute="bottom" constant="8" id="AVL-lO-Bg0"/>
+                        <constraint firstAttribute="centerX" secondItem="HJE-uS-ivv" secondAttribute="centerX" id="BgH-wJ-NNA"/>
+                        <constraint firstItem="HJE-uS-ivv" firstAttribute="top" secondItem="jio-h5-5mM" secondAttribute="bottom" constant="8" id="Cax-T4-bzz"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Irf-Pj-Mwl" secondAttribute="trailing" constant="5" id="Erd-J6-l8O"/>
+                        <constraint firstItem="GgK-9c-bOy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sVq-hU-87M" secondAttribute="leading" constant="5" id="Gzv-s7-bbh"/>
+                        <constraint firstAttribute="centerX" secondItem="jio-h5-5mM" secondAttribute="centerX" id="OlD-k7-EIj"/>
+                        <constraint firstItem="Irf-Pj-Mwl" firstAttribute="top" secondItem="GgK-9c-bOy" secondAttribute="bottom" constant="2" id="RAO-Jj-ehi"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jio-h5-5mM" secondAttribute="trailing" constant="5" id="b7g-7f-6ND"/>
+                        <constraint firstItem="Irf-Pj-Mwl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sVq-hU-87M" secondAttribute="leading" constant="5" id="bP3-tl-sxo"/>
+                        <constraint firstAttribute="centerX" secondItem="GgK-9c-bOy" secondAttribute="centerX" id="fHR-2u-Keb"/>
+                        <constraint firstAttribute="centerY" secondItem="HJE-uS-ivv" secondAttribute="centerY" id="ftr-VO-eMT"/>
+                        <constraint firstAttribute="centerX" secondItem="Irf-Pj-Mwl" secondAttribute="centerX" id="gSg-0K-D3r"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GgK-9c-bOy" secondAttribute="trailing" constant="5" id="vw7-3n-Bgg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="sVq-hU-87M" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Jdh-eV-fhX"/>
+                <constraint firstItem="xd2-lU-e08" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="Nve-LY-dE1"/>
+                <constraint firstItem="BiC-QR-Dre" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="PhD-JG-S8p"/>
+                <constraint firstItem="3fk-Kq-SNX" firstAttribute="top" secondItem="sVq-hU-87M" secondAttribute="bottom" id="RFh-GU-J3X"/>
+                <constraint firstItem="xd2-lU-e08" firstAttribute="top" secondItem="3fk-Kq-SNX" secondAttribute="bottom" id="a6J-fL-WaU"/>
+                <constraint firstAttribute="trailing" secondItem="xd2-lU-e08" secondAttribute="trailing" constant="20" symbolic="YES" id="dFI-UX-17H"/>
+                <constraint firstAttribute="bottom" secondItem="BiC-QR-Dre" secondAttribute="bottom" constant="20" symbolic="YES" id="eCD-Ee-EEt"/>
+                <constraint firstItem="3fk-Kq-SNX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="g5c-PL-gwx"/>
+                <constraint firstAttribute="trailing" secondItem="3fk-Kq-SNX" secondAttribute="trailing" id="kHX-Gh-eTg"/>
+                <constraint firstAttribute="trailing" secondItem="sVq-hU-87M" secondAttribute="trailing" id="lpm-WI-73V"/>
+                <constraint firstAttribute="trailing" secondItem="BiC-QR-Dre" secondAttribute="trailing" constant="20" symbolic="YES" id="mCb-xH-rve"/>
+                <constraint firstItem="BiC-QR-Dre" firstAttribute="top" secondItem="xd2-lU-e08" secondAttribute="bottom" constant="5" id="pnB-bn-L0k"/>
+                <constraint firstItem="sVq-hU-87M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yKB-th-Iq6"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chillies.png" width="640" height="425"/>
+    </resources>
+</document>
