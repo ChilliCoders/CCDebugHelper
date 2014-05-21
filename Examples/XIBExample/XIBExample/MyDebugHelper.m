@@ -19,11 +19,11 @@
     // you can extract controller config to another method
     [viewControllers addObject:[self configForProfileViewController]];
     
-    // or you can write it inline
+    // or you can write it inline and set custom XIB name
     CCViewControllerConfig *config = [CCViewControllerConfig configWithName:@"Profile Edit"
-                                                              forController:[ProfileViewController class]
-                                                       storyboardIdentifier:@"ProfileEditViewController"
-                                                                 storyboard:[UIStoryboard storyboardWithName:@"Main" bundle:nil]];
+                                                              forController:[ProfileEditViewController class]
+                                                                    xibName:@"EditUserProfile"];
+    
     [config setShouldWrapControllerWithNavigationController:YES];
     [viewControllers addObject:config];
     
@@ -34,10 +34,7 @@
 
 - (CCViewControllerConfig *)configForProfileViewController {
     
-    CCViewControllerConfig *config = [CCViewControllerConfig configWithName:@"Profile"
-                                                              forController:[ProfileViewController class]
-                                                       storyboardIdentifier:@"ProfileViewController"
-                                                                 storyboard:[UIStoryboard storyboardWithName:@"Main" bundle:nil]];
+    CCViewControllerConfig *config = [CCViewControllerConfig configWithName:@"Profile" forController:[ProfileViewController class]];
     [config setShouldWrapControllerWithNavigationController:YES];
     
     // you can extract before action to another method
@@ -81,7 +78,7 @@
 
 - (CCBeforeAction *)loginAction {
     return [[CCBeforeAction alloc] initAsyncActionWithName:@"Login" actionBlock:^(id controller, CCViewControllerConfigComplete complete) {
-       
+        
         // do async stuff for login
         
         // you need call complete callback for Async Actions

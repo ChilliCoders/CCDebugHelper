@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
+            <connections>
+                <outlet property="profileImageView" destination="eBi-Yd-gYW" id="O6c-b4-CnB"/>
+                <outlet property="usernameLabel" destination="oai-Xl-Vuw" id="E2R-1P-qu4"/>
+                <outlet property="view" destination="iN0-l3-epB" id="bK9-GL-XQi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOa-wu-Naf">
+                    <rect key="frame" x="20" y="74" width="108" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oai-Xl-Vuw">
+                    <rect key="frame" x="136" y="74" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eBi-Yd-gYW">
+                    <rect key="frame" x="136" y="103" width="164" height="164"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="eBi-Yd-gYW" secondAttribute="height" multiplier="1:1" id="SWU-bW-qZl"/>
+                        <constraint firstAttribute="width" constant="164" id="hhk-p7-Ys8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile image:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acB-e1-XIV">
+                    <rect key="frame" x="20" y="103" width="108" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="eBi-Yd-gYW" firstAttribute="leading" secondItem="acB-e1-XIV" secondAttribute="trailing" constant="8" id="2l5-yl-pih"/>
+                <constraint firstItem="FOa-wu-Naf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="74" id="7UQ-qW-1GX"/>
+                <constraint firstItem="FOa-wu-Naf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="ICK-0f-d2M"/>
+                <constraint firstItem="oai-Xl-Vuw" firstAttribute="leading" secondItem="FOa-wu-Naf" secondAttribute="trailing" constant="8" id="RkE-mS-NtM"/>
+                <constraint firstItem="acB-e1-XIV" firstAttribute="width" secondItem="FOa-wu-Naf" secondAttribute="width" id="USt-yZ-D4m"/>
+                <constraint firstItem="eBi-Yd-gYW" firstAttribute="width" secondItem="eBi-Yd-gYW" secondAttribute="height" multiplier="1:1" id="fAh-Y4-bvZ"/>
+                <constraint firstItem="eBi-Yd-gYW" firstAttribute="top" secondItem="oai-Xl-Vuw" secondAttribute="bottom" constant="8" id="mSP-lF-bOZ"/>
+                <constraint firstItem="oai-Xl-Vuw" firstAttribute="baseline" secondItem="FOa-wu-Naf" secondAttribute="baseline" id="nle-ak-EWU"/>
+                <constraint firstItem="FOa-wu-Naf" firstAttribute="leading" secondItem="acB-e1-XIV" secondAttribute="leading" id="rjB-Kh-Nu9"/>
+                <constraint firstItem="acB-e1-XIV" firstAttribute="top" secondItem="FOa-wu-Naf" secondAttribute="bottom" constant="8" id="vGA-hD-zjc"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>
