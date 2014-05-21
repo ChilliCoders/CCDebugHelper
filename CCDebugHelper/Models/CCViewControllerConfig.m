@@ -35,7 +35,7 @@
     self = [super init];
     if (self) {
         self.shouldWrapControllerWithNavigationController = NO;
-        _navigationControllerClassName = [UINavigationController class];
+        _navigationControllerClass = [UINavigationController class];
     }
     return self;
 }
@@ -48,8 +48,9 @@
     } else {
         if (self.xibName) {
             userController = [[self.klass alloc] initWithNibName:self.xibName bundle:nil];
+        } else {
+            userController = [[self.klass alloc] initWithNibName:NSStringFromClass(self.klass) bundle:nil];
         }
-        userController = [[self.klass alloc] init];
     }
     
     dispatch_queue_t backgroundTasks = dispatch_queue_create("CCDebugHelper-Async", nil);
@@ -62,7 +63,7 @@
         dispatch_semaphore_wait(self.asyncWait, DISPATCH_TIME_FOREVER);
         
         if (self.shouldWrapControllerWithNavigationController) {
-            complete([[self.navigationControllerClassName alloc] initWithRootViewController:userController]);
+            complete([[self.navigationControllerClass alloc] initWithRootViewController:userController]);
         } else {
             complete(userController);
         }
@@ -162,11 +163,11 @@
         }
     } else {
         if (self.xibName) {
-            if([[NSBundle mainBundle] pathForResource:self.xibName ofType:@"nib"] != nil) {
+            if([[NSBundle mainBundle] pathForResource:self.xibName ofType:@"xib"] != nil) {
                 [NSException raise:@"CCViewControllerConfig" format:@"Xib '%@.xib/nib' file for '%@' class not exist", self.xibName, klassString];
             }
         } else {
-            if([[NSBundle mainBundle] pathForResource:klassString ofType:@"nib"] != nil) {
+            if([[NSBundle mainBundle] pathForResource:klassString ofType:@"xib"] != nil) {
                 [NSException raise:@"CCViewControllerConfig" format:@"Xib '%@.xib/nib' file for '%@' class not exist", klassString, klassString];
             }
         }

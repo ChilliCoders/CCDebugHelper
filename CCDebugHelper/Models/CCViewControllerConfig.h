@@ -22,7 +22,7 @@ typedef void (^CCViewControllerConfigInitializeComplete)(id controller);
 @interface CCViewControllerConfig : NSObject
 
 @property (assign) BOOL shouldWrapControllerWithNavigationController;
-@property (nonatomic, assign) Class navigationControllerClassName;
+@property (nonatomic, assign) Class navigationControllerClass;
 @property (nonatomic, weak) id <CCViewControllerConfigDelegate> delegate;
 
 
