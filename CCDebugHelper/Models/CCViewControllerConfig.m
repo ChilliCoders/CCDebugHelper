@@ -25,7 +25,6 @@
 
 // beforeActions
 @property (nonatomic, strong) NSMutableArray *beforeActions;
-@property (nonatomic, strong) dispatch_semaphore_t asyncWait;
 
 @end
 
@@ -53,49 +52,40 @@
         }
     }
     
-    dispatch_queue_t backgroundTasks = dispatch_queue_create("CCDebugHelper-Async", nil);
-    dispatch_async(backgroundTasks, ^{
-        
-        self.asyncWait = dispatch_semaphore_create(0);
-        
-        [self fireUpBeforeActionWithIndex:0 onController:userController];
-        
-        dispatch_semaphore_wait(self.asyncWait, DISPATCH_TIME_FOREVER);
-        
-        if (self.shouldWrapControllerWithNavigationController) {
-            complete([[self.navigationControllerClass alloc] initWithRootViewController:userController]);
-        } else {
-            complete(userController);
-        }
-    });
-}
-
-- (void)fireUpBeforeActionWithIndex:(NSUInteger)index onController:(id)controller {
+    NSOperationQueue *actualQueue = [NSOperationQueue currentQueue];
+    NSOperationQueue *beforeActionsQueue = [[NSOperationQueue alloc] init];
+    [beforeActionsQueue setMaxConcurrentOperationCount:1];
     
-    if (index < self.beforeActions.count) {
-        CCBeforeAction *action = self.beforeActions[index];
-        
-        if (!action.isAsync) {
-            [self informDelegateAboutTriggeringActionWithName:action.name];
-            ((CCViewControllerConfigBeforeAction)[action actionBlock])(controller);
-            [self fireUpBeforeActionWithIndex:index + 1 onController:controller];
-            [self checkFinishAsyncForIndex:index];
-        } else {
-            ((CCViewControllerConfigBeforeAsyncAction)[action actionBlock])(controller, ^{
+    [self.beforeActions enumerateObjectsUsingBlock:^(CCBeforeAction *action, NSUInteger idx, BOOL *stop) {
+       
+        [beforeActionsQueue addOperationWithBlock:^{
+            [actualQueue addOperationWithBlock:^{
                 [self informDelegateAboutTriggeringActionWithName:action.name];
-                [self fireUpBeforeActionWithIndex:index + 1 onController:controller];
-                [self checkFinishAsyncForIndex:index];
-            });
-        }
-    } else {
-        [self checkFinishAsyncForIndex:index];
-    }
-}
-
-- (void)checkFinishAsyncForIndex:(NSUInteger)index {
-    if (index == self.beforeActions.count - 1 || self.beforeActions.count == 0) {
-        dispatch_semaphore_signal(self.asyncWait);
-    }
+            }];
+            if (!action.isAsync) {
+                ((CCViewControllerConfigBeforeAction)[action actionBlock])(userController);
+            } else {
+                dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+                ((CCViewControllerConfigBeforeAsyncAction)[action actionBlock])(userController, ^{
+                    dispatch_semaphore_signal(semaphore);
+                });
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            }
+        }];
+        
+    }];
+    
+    [beforeActionsQueue addOperationWithBlock:^{
+        [actualQueue addOperationWithBlock:^{
+            NSLog(@"Should show");
+            if (self.shouldWrapControllerWithNavigationController) {
+                complete([[self.navigationControllerClass alloc] initWithRootViewController:userController]);
+            } else {
+                complete(userController);
+            }
+        }];
+    }];
+    
 }
 
 - (void)informDelegateAboutTriggeringActionWithName:(NSString *)name {
