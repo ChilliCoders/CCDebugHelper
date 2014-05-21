@@ -1,5 +1,6 @@
+![CCDebugHelper logo](http://files.chillicoders.com/ChilliInDebug.jpg)
+
 # CCDebugHelper
-===============
 
 CCDebugHelper is a library made to speedup application debug. Instead of clicking interface to get to right view controller you can define all view controllers in your application and easy decide which one should appear on start or list all defined controllers. But, this isn't everything. You can define before actions to prepare your controller to show. There are two version of before action synchronized and asynchronized.
 
