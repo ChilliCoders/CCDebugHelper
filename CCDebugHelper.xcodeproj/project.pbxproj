@@ -57,6 +57,7 @@
 		79E050E5190FFCAF001BD49F /* CCDebugHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCDebugHelper.m; sourceTree = "<group>"; };
 		79E050EC190FFCAF001BD49F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		79E050EF190FFCAF001BD49F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		79E4AE02192CA8A500989C78 /* CCDebugHelper.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCDebugHelper.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 				79E050E0190FFCAF001BD49F /* CCDebugHelper */,
 				79E050DD190FFCAF001BD49F /* Frameworks */,
 				79E050DC190FFCAF001BD49F /* Products */,
+				79E4AE02192CA8A500989C78 /* CCDebugHelper.podspec */,
 			);
 			sourceTree = "<group>";
 		};

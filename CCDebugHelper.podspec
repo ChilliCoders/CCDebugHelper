@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = "CCDebugHelper"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Library for fast debug view controllers in large applications"
   
   s.homepage         = "http://chillicoders.com"
   s.screenshots      = ""
   s.license          = 'MIT'
   s.author           = { "Rafał Wójcik" => "rafalwojcik@me.com" }
-  s.source           = { :git => "https://github.com/ChilliCoders/CCDebugHelper", :tag => "1.0.0", :submodules => true }
+  s.source           = { :git => "https://github.com/ChilliCoders/CCDebugHelper", :tag => "1.0.1", :submodules => true }
 
   s.platform     = :ios, '7.0'
   s.ios.deployment_target = '7.0'
