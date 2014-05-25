@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Ccdebughelper by ChilliCoders</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Ccdebughelper</h1>
+        <h2></h2>
+        <a href="https://github.com/ChilliCoders/CCDebugHelper" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p><img src="http://files.chillicoders.com/ChilliInDebug.jpg" alt="CCDebugHelper logo"></p>
+
+<h1>
+<a name="ccdebughelper" class="anchor" href="#ccdebughelper"><span class="octicon octicon-link"></span></a>CCDebugHelper</h1>
+
+<p>CCDebugHelper is a library made to speedup application debug. Instead of clicking interface to get to right view controller you can define all view controllers in your application and easy decide which one should appear on start or list all defined controllers. But, this isn't everything. You can define before actions to prepare your controller to show. There are two version of before action synchronized and asynchronized.</p>
+
+<h2>
+<a name="warning" class="anchor" href="#warning"><span class="octicon octicon-link"></span></a>WARNING</h2>
+
+<p>This library is made for debugging, so <strong>NEVER</strong> leave it in your AppStore Version <strong>!!!</strong></p>
+
+<h2>
+<a name="how-to-get-started" class="anchor" href="#how-to-get-started"><span class="octicon octicon-link"></span></a>How To Get Started</h2>
+
+<h3>
+<a name="installation-with-cocoapods" class="anchor" href="#installation-with-cocoapods"><span class="octicon octicon-link"></span></a>Installation with CocoaPods</h3>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like CCDebugHelper in your projects.</p>
+
+<h4>
+<a name="podfile" class="anchor" href="#podfile"><span class="octicon octicon-link"></span></a>Podfile</h4>
+
+<div class="highlight highlight-ruby"><pre><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'7.0'</span>
+<span class="n">pod</span> <span class="s2">"CCDebugHelper"</span><span class="p">,</span> <span class="s2">"~&gt; 1.0.0"</span>
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>After install, first of all you need to do is create subclass of our <code>CCDebugHelper</code> class. You can name it what ever you want. In this example I will use <code>MyDebugHelper</code> class.</p>
+
+<p>You must override method called <code>- (NSArray *)viewControllersConfigs;</code> end return array of <code>CCViewControllerConfig</code> class objects.</p>
+
+<p>On single <code>CCViewControllerConfig</code> object you can specify things to setup view controller and add before action.</p>
+
+<p>To simply use list view you need add few lines in AppDelegate <code>application:didFinishLaunchingWithOptions:</code> method:</p>
+
+<div class="highlight highlight-objective-c"><pre><span class="c1">// initialize CCDebugHelper with application window</span>
+<span class="n">MyDebugHelper</span> <span class="o">*</span><span class="n">viewDebuger</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyDebugHelper</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithWindow</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">window</span><span class="p">];</span>
+
+<span class="c1">// tell CCDebugHelper to show list of controllers</span>
+<span class="p">[</span><span class="n">viewDebuger</span> <span class="n">showControllersList</span><span class="p">];</span>
+</pre></div>
+
+<p>If you want show specific controller you can use method:</p>
+
+<div class="highlight highlight-objective-c"><pre><span class="c1">// this method will show first view controller from config list</span>
+<span class="p">[</span><span class="n">viewDebuger</span> <span class="n">showControllerWithConfigIndex</span><span class="o">:</span><span class="mi">0</span><span class="p">];</span>
+</pre></div>
+
+<h3>
+<a name="ccviewcontrollerconfig" class="anchor" href="#ccviewcontrollerconfig"><span class="octicon octicon-link"></span></a>CCViewControllerConfig</h3>
+
+<p><strong>With storyborad:</strong></p>
+
+<div class="highlight highlight-objective-c"><pre><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">configWithName:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span>
+                 <span class="nl">forController:</span><span class="p">(</span><span class="kt">Class</span><span class="p">)</span><span class="nv">controllerClass</span>
+          <span class="nl">storyboardIdentifier:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">storyboardIdentifier</span>
+                    <span class="nl">storyboard:</span><span class="p">(</span><span class="n">UIStoryboard</span> <span class="o">*</span><span class="p">)</span><span class="nv">storyboard</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>With XIB:</strong></p>
+
+<div class="highlight highlight-objective-c"><pre><span class="c1">// When controller name is the same like XIB name</span>
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">configWithName:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span>
+                 <span class="nl">forController:</span><span class="p">(</span><span class="kt">Class</span><span class="p">)</span><span class="nv">controllerClass</span><span class="p">;</span>
+
+<span class="c1">// for custom XIB name uose this method</span>
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">configWithName:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span>
+                 <span class="nl">forController:</span><span class="p">(</span><span class="kt">Class</span><span class="p">)</span><span class="nv">controllerClass</span>
+                       <span class="nl">xibName:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">xibName</span><span class="p">;</span>
+</pre></div>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight highlight-objective-c"><pre><span class="n">CCViewControllerConfig</span> <span class="o">*</span><span class="n">config</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCViewControllerConfig</span> <span class="n">configWithName</span><span class="o">:</span><span class="s">@"Profile"</span>
+                                                          <span class="nl">forController:</span><span class="p">[</span><span class="n">ProfileViewController</span> <span class="n">class</span><span class="p">]</span>
+                                                   <span class="nl">storyboardIdentifier:</span><span class="s">@"ProfileViewController"</span>
+                                                             <span class="nl">storyboard:</span><span class="p">[</span><span class="n">UIStoryboard</span> <span class="n">storyboardWithName</span><span class="o">:</span><span class="s">@"Main"</span> <span class="n">bundle</span><span class="o">:</span><span class="nb">nil</span><span class="p">]];</span>
+
+<span class="c1">// wrap controller with navigation controller</span>
+<span class="p">[</span><span class="n">config</span> <span class="n">setShouldWrapControllerWithNavigationController</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+
+<span class="c1">// set custom navigation controller class</span>
+<span class="p">[</span><span class="n">config</span> <span class="n">setNavigationControllerClass</span><span class="o">:</span><span class="p">[</span><span class="n">MyCustomNavigationControllerClass</span> <span class="n">class</span><span class="p">]];</span>
+</pre></div>
+
+<p>To wrap your controller with navigation controller set property <code>shouldWrapControllerWithNavigationController</code></p>
+
+<p>To use custom navigationcontroller class set property: <code>navigationControllerClass</code></p>
+
+<h3>
+<a name="ccbeforeaction" class="anchor" href="#ccbeforeaction"><span class="octicon octicon-link"></span></a>CCBeforeAction</h3>
+
+<p><strong>Add synchronized action (like prepare for segue):</strong></p>
+
+<div class="highlight highlight-objective-c"><pre><span class="n">CCBeforeAction</span> <span class="o">*</span><span class="n">preapareProfileViewControllerAction</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CCBeforeAction</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initSyncActionWithName</span><span class="o">:</span><span class="s">@"Setting username"</span> <span class="n">actionBlock</span><span class="o">:^</span><span class="p">(</span><span class="n">ProfileViewController</span> <span class="o">*</span><span class="n">controller</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">controller</span><span class="p">.</span><span class="n">username</span> <span class="o">=</span> <span class="s">@"chillicoder"</span><span class="p">;</span>
+<span class="p">}];</span>
+<span class="p">[</span><span class="n">config</span> <span class="n">addBeforeAction</span><span class="o">:</span><span class="n">preapareProfileViewControllerAction</span><span class="p">];</span>
+</pre></div>
+
+<p><strong>Add asynchronized action:</strong></p>
+
+<pre><code>CCBeforeAction *loginAction = [[CCBeforeAction alloc] initAsyncActionWithName:@"Login" actionBlock:^(id controller, CCViewControllerConfigComplete complete) {
+
+    // do async stuff for login
+
+    // you need call complete callback for asynchronized actions
+    complete();
+}];
+[config addBeforeAction:preapareProfileViewControllerAction];
+</code></pre>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>[x] XIB Example</li>
+<li>[ ] Support for controllers without XIB or StoryBorad</li>
+<li>[ ] Support for iPad (loading controller and list view layout)</li>
+<li>[ ] Add option to setup CCDebugHelper with data source delegation instead of subclassing</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/ChilliCoders/CCDebugHelper/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/ChilliCoders/CCDebugHelper/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/ChilliCoders/CCDebugHelper"></a> is maintained by <a href="https://github.com/ChilliCoders">ChilliCoders</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
